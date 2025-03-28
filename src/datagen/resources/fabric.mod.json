@@ -1,0 +1,14 @@
+{
+	"schemaVersion": 1,
+	"id": "aristotles_comedy-datagen",
+	"version": "0",
+
+	"entrypoints": {
+		"fabric-datagen": [
+			"org.solstice.aristotlesComedy.datagen.AristotlesComedyDataGenerator"
+		]
+	},
+	"mixins": [
+		"aristotles_comedy.datagen.mixins.json"
+	]
+}

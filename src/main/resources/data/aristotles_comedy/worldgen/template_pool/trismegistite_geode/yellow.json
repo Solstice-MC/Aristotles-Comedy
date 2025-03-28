@@ -1,0 +1,15 @@
+{
+	"fallback": "minecraft:empty",
+	"elements": [
+		{
+			"weight": 1,
+			"element": {
+				"element_type": "minecraft:single_pool_element",
+				"projection": "rigid",
+				"processors": "minecraft:empty",
+				"location": "aristotles_comedy:trismegistite_geode/yellow/0",
+				"override_liquid_settings": "apply_waterlogging"
+			}
+		}
+	]
+}

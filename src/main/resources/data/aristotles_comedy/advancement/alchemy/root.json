@@ -1,0 +1,27 @@
+{
+	"criteria": {
+		"consumed_item": {
+			"trigger": "minecraft:consume_item"
+		}
+	},
+	"display": {
+		"announce_to_chat": false,
+		"background": "aristotles_comedy:textures/gui/advancements/backgrounds/alchemy.png",
+		"description": {
+			"translate": "advancements.aristotles_comedy.alchemy.description"
+		},
+		"icon": {
+			"count": 1,
+			"id": "minecraft:hay_block"
+		},
+		"show_toast": false,
+		"title": {
+			"translate": "advancements.aristotles_comedy.alchemy.title"
+		}
+	},
+	"requirements": [
+		[
+			"consumed_item"
+		]
+	]
+}

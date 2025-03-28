@@ -1,0 +1,26 @@
+{
+	"parent": "aristotles_comedy:alchemy/root",
+
+	"display": {
+		"icon": {
+			"id": "minecraft:hay_block"
+		},
+		"title": {
+			"translate": "advancements.aristotles_comedy.alchemy.title"
+		},
+		"description": {
+			"translate": "advancements.aristotles_comedy.alchemy.description"
+		}
+	},
+
+	"criteria": {
+		"consumed_item": {
+			"trigger": "minecraft:consume_item"
+		}
+	},
+	"requirements": [
+		[
+			"consumed_item"
+		]
+	]
+}

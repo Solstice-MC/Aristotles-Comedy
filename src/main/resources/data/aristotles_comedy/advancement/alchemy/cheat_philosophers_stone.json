@@ -1,0 +1,37 @@
+{
+	"parent": "aristotles_comedy:alchemy/obtain_philosophers_stone",
+
+	"display": {
+		"frame": "challenge",
+		"icon": {
+			"id": "minecraft:slime_ball"
+		},
+		"title": {
+			"translate": "advancements.aristotles_comedy.alchemy.cheat_philosophers_stone.title"
+		},
+		"description": {
+			"translate": "advancements.aristotles_comedy.alchemy.cheat_philosophers_stone.description"
+		}
+	},
+	"hidden": true,
+
+	"criteria": {
+		"cheat_philosophers_stone": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"aristotles_comedy:philosophers_stone"
+						]
+					}
+				]
+			}
+		}
+	},
+	"requirements": [
+		[
+			"cheat_philosophers_stone"
+		]
+	]
+}

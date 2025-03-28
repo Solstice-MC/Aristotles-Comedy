@@ -1,0 +1,15 @@
+{
+	"type": "aristotles_comedy:metallurgy",
+
+	"base": {
+		"item": "aristotles_comedy:tin_ingot"
+	},
+	"addition": {
+		"item": "minecraft:raw_copper",
+		"amount": 3
+	},
+
+	"result": {
+		"id": "aristotles_comedy:bronze_ingot"
+	}
+}

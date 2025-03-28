@@ -1,0 +1,27 @@
+{
+	"parent": "aristotles_comedy:alchemy/transmute_all_ingots",
+
+	"display": {
+		"frame": "challenge",
+		"icon": {
+			"id": "aristotles_comedy:philosophers_stone"
+		},
+		"title": {
+			"translate": "advancements.aristotles_comedy.alchemy.obtain_philosophers_stone.title"
+		},
+		"description": {
+			"translate": "advancements.aristotles_comedy.alchemy.obtain_philosophers_stone.description"
+		}
+	},
+
+	"criteria": {
+		"obtain_philosophers_stone": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"requirements": [
+		[
+			"obtain_philosophers_stone"
+		]
+	]
+}

@@ -1,0 +1,18 @@
+{
+	"type": "aristotles_comedy:transmutation",
+
+	"ingredient": {
+		"id": "aristotles_comedy:nickel_ingot"
+	},
+	"amount": 3,
+
+	"primary_humor": "aristotles_comedy:phleghm",
+	"secondary_humors": [
+		"aristotles_comedy:blood",
+		"aristotles_comedy:yellow_bile"
+	],
+
+	"result": {
+		"id": "aristotles_comedy:mercury_ingot"
+	}
+}

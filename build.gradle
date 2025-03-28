@@ -1,0 +1,57 @@
+plugins {
+    id 'dev.architectury.loom' version '1.7-SNAPSHOT'
+}
+
+base.archivesName = mod_id
+group = mod_group
+version = mod_version
+
+repositories {
+    maven { url 'https://maven.neoforged.net/releases' }
+    maven { url 'https://maven.createmod.net' }
+    maven { url 'https://raw.githubusercontent.com/Fuzss/modresources/main/maven' }
+}
+
+dependencies {
+    minecraft "net.minecraft:minecraft:$minecraft_version"
+    mappings loom.layered {
+        it.mappings("net.fabricmc:yarn:$yarn_mappings:v2")
+        it.mappings("dev.architectury:yarn-mappings-patch-neoforge:$yarn_mappings_patch_version")
+    }
+    neoForge "net.neoforged:neoforge:$neoforge_version"
+
+//    implementation "net.createmod.ponder:Ponder-NeoForge-$minecraft_version:$ponder_version"
+}
+
+sourceSets {
+    datagen {
+        compileClasspath += main.compileClasspath
+        runtimeClasspath += main.runtimeClasspath
+        compileClasspath += main.output
+        runtimeClasspath += main.output
+    }
+}
+sourceSets.main.resources.srcDir 'src/generated/resources'
+
+loom {
+    interfaceInjection {
+        enableDependencyInterfaceInjection = true
+    }
+
+
+    runs {
+        datagen {
+            data()
+            programArgs("--mod", "$mod_id", "--all", "--output", file("src/generated/resources").absolutePath)
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+    }
+}
+
+processResources {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	filesMatching('META-INF/neoforge.mods.toml') {
+        expand project.properties
+    }
+}

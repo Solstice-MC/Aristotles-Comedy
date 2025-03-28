@@ -1,0 +1,15 @@
+{
+	"required": true,
+	"package": "org.solstice.aristotlesComedy.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"FlintAndSteelItemMixin",
+		"MaxStackSizeMixins$DataComponentTypesMixin",
+		"MaxStackSizeMixins$InventoryMixin",
+		"MaxStackSizeMixins$ItemCommandMixin",
+		"MaxStackSizeMixins$ItemStackMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+
+	"key": {
+		"I": { "item": "aristotles_comedy:bronze_ingot" }
+	},
+	"pattern": [
+		"III",
+		"I I",
+		"III"
+	],
+
+	"result": {
+		"id": "aristotles_comedy:athanor"
+	}
+}
