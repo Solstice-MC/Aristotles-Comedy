@@ -1,0 +1,17 @@
+{
+	"additions": [
+		{
+			"dimension": "minecraft:the_nether",
+			"biome": "aristotles_comedy:ashfields",
+			"noise": {
+				"temperature": -1.0,
+				"humidity": -0.5,
+				"continentalness": 0.0,
+				"erosion": 0.5,
+				"depth": 0.0,
+				"weirdness": 0.5,
+				"offset": 0.0
+			}
+		}
+	]
+}
