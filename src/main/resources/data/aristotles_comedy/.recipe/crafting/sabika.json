@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+
+	"key": {
+		"#": { "item": "minecraft:copper_ingot" },
+		"I": { "item": "minecraft:sandstone" }
+	},
+	"pattern": [
+		"III",
+		"I I",
+		"###"
+	],
+
+	"result": {
+		"count": 1,
+		"id": "minecraft:blast_furnace"
+	}
+}

@@ -27,13 +27,13 @@
 				]
 			}
 		},
-		"transmute_palladium": {
+		"transmute_silver": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": {
 				"items": [
 					{
 						"items": [
-							"aristotles_comedy:palladium_ingot"
+							"aristotles_comedy:silver_ingot"
 						]
 					}
 				]

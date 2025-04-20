@@ -1,22 +1,23 @@
 {
 	"schemaVersion": 1,
 	"id": "aristotles_comedy",
-	"version": "${version}",
-	"name": "aristotles_comedy",
-	"description": "This is an example description! Tell everyone what your mod is about!",
-	"authors": [
-		"Me!"
-	],
+	"version": "${mod_version}",
+
+	"name": "Aristotle's Comedy",
+	"description": "Occult science mod focused on humorism and alchemy",
+	"authors": [ "Solstice" ],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/Solstice-MC",
+		"sources": "https://github.com/Solstice-MC/Aristotles-Comedy"
 	},
-	"license": "LGPL-3.0+CC-BY-SA-3.0",
+	"license": "LGPL-3.0",
+	"icon": "assets/aristotles_comedy/icon.png",
 
 	"environment": "*",
 	"entrypoints": {
-		"main": [ "com.sindercube.aristotlesComedy.AristotlesComedy" ],
-		"client": [ "com.sindercube.aristotlesComedy.client.AristotlesComedyClient" ]
+		"main": [ "org.solstice.aristotlesComedy.AristotlesComedy" ],
+		"client": [ "org.solstice.aristotlesComedy.client.AristotlesComedyClient" ],
+		"fabric-datagen": [ "org.solstice.aristotlesComedy.AristotlesComedyDataGenerator" ]
 	},
 	"mixins": [
 		"aristotles_comedy.mixins.json",
@@ -26,10 +27,18 @@
 		}
 	],
 	"accessWidener": "aristotles_comedy.accesswidener",
+	"custom": {
+		"loom:injected_interfaces": {
+			"net/minecraft/item/ItemStack": [ "org/solstice/aristotlesComedy/access/AristotlesItemStack" ]
+		}
+	},
 
+	"depends": {
+		"minecraft": "*",
+		"fabric-api": "*"
+	},
 	"suggests": {
-		"fabricloader": "*",
-		"fabric-api": "*",
-		"minecraft": "~1.21.1"
+		"minecraft": "~${minecraft_version}",
+		"fabric-api": "~${fabric_version}"
 	}
 }

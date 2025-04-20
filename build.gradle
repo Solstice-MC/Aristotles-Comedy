@@ -7,9 +7,8 @@ version = project.mod_version
 group = project.mod_group
 
 repositories {
-	mavenLocal {
-		content { includeGroup "com.sindercube.iconic" }
-	}
+	maven { url "https://dl.cloudsmith.io/public/solstice-mc/artifacts/maven/" }
+	mavenLocal()
 }
 
 loom {
@@ -24,10 +23,7 @@ loom {
 }
 
 fabricApi {
-	configureDataGeneration {
-		client = true
-		createSourceSet = true
-	}
+	configureDataGeneration()
 }
 
 dependencies {
@@ -35,9 +31,7 @@ dependencies {
 	mappings "net.fabricmc:yarn:$yarn_mappings:v2"
 	modImplementation "net.fabricmc:fabric-loader:$loader_version"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_version"
-
-	include modImplementation("com.sindercube.iconic:iconic-base:$iconic_version")
-	include modImplementation("com.sindercube.iconic:iconic-custom-model-api:$iconic_custom_model_version")
+	modImplementation "org.solstice:euclids-elements:$euclids_elements_version"
 }
 
 processResources {
@@ -46,4 +40,3 @@ processResources {
 		expand project.properties
 	}
 }
-

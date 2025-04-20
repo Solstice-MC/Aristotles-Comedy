@@ -1,0 +1,34 @@
+{
+	"type": "aristotles_comedy:processing",
+
+	"base": {
+		"id": "minecraft:glowstone"
+	},
+
+	"processes": [
+		{
+			"type": "aristotles_comedy:combination",
+			"resource": {
+				"fluid": "minecraft:water"
+			}
+		},
+		{
+			"type": "aristotles_comedy:distilling",
+			"temperature": "hot"
+		},
+		{
+			"type": "aristotles_comedy:combination",
+			"resource": {
+				"item": "minecraft:gunpowder"
+			}
+		},
+		{
+			"type": "aristotles_comedy:distilling",
+			"temperature": "hot"
+		}
+	],
+
+	"result": {
+		"id": "aristotles_comedy:alkahest"
+	}
+}
