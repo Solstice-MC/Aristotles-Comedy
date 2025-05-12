@@ -9,6 +9,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+import org.solstice.aristotlesComedy.content.item.ResearchableItem;
 
 import java.util.function.Function;
 
@@ -18,6 +19,9 @@ public class AristotlesItems {
 
 	public static final FoodComponent ASH_SOUP_FOOD_COMPONENT = new FoodComponent.Builder()
 		.nutrition(-2).saturationModifier(-0.2f).alwaysEdible().usingConvertsTo(Items.BOWL).build();
+
+	public static final Item ARCHATAME = register("archatame");
+	public static final Item RESEARCH_NOTES = register("research_notes", ResearchableItem::new);
 
 	public static final Item RAW_ENXOFA = register("raw_enxofa", new Item.Settings().maxCount(960));
 	public static final Item RAW_SANGVIA = register("raw_sangvia", new Item.Settings().maxCount(960));

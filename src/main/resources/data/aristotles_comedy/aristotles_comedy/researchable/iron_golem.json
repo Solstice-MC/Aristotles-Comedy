@@ -1,0 +1,23 @@
+{
+	"civilization": "villager",
+	"size": [128, 128],
+	"contents": [
+		{
+			"type": "aristotles_comedy:text",
+			"text": { "translate": "research_note.aristotles_comedy.iron_golem.description" }
+		},
+		{
+			"type": "aristotles_comedy:image",
+			"size": [64, 64],
+			"path": "aristotles_comedy:iron_golem_headless_sketch",
+			"description": { "translate": "test" }
+		},
+		{
+			"type": "aristotles_comedy:image",
+			"size": [64, 64],
+			"path": "aristotles_comedy:iron_golem_pumpkin_sketch",
+			"description": { "translate": "test" },
+			"effect": "aristotles_comedy:invisible_ink"
+		}
+	]
+}

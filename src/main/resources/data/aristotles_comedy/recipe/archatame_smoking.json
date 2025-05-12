@@ -1,0 +1,10 @@
+{
+	"type": "minecraft:smoking",
+	"category": "misc",
+
+	"ingredient": { "item": "aristotles_comedy:archatame" },
+
+	"result": {
+		"id": "minecraft:yellow_dye"
+	}
+}

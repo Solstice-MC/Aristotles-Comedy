@@ -1,0 +1,10 @@
+{
+	"type": "minecraft:smelting",
+	"category": "misc",
+
+	"ingredient": { "item": "aristotles_comedy:archatame" },
+
+	"result": {
+		"id": "minecraft:red_dye"
+	}
+}

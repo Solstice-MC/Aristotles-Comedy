@@ -7,10 +7,10 @@
 		"targets": [
 			{
 				"state": {
-					"Name": "aristotles_comedy:nether_lead_ore"
+					"Name": "aristotles_comedy:blackstone_lead_ore"
 				},
 				"target": {
-					"block": "minecraft:netherrack",
+					"block": "minecraft:blackstone",
 					"predicate_type": "minecraft:block_match"
 				}
 			}

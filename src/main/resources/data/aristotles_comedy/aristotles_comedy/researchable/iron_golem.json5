@@ -1,0 +1,22 @@
+{
+	"civilization": "villager", // idk if this would actually get used
+	"size": [128, 128], // sprite size
+	"content": [ // list of all content types that will appear on the paper
+		{
+			"type": "text", // basic text component
+			"key": "research_note.aristotles_comedy.iron_golem.description"
+		},
+		{
+			"type": "image", // basic image component
+			"size": [64, 64], // sprite size, obviously
+			"path": "aristotles_comedy:iron_golem_headless_sketch",
+		},
+		{
+			"type": "image", // basic image component
+			"size": [64, 64], // sprite size, obviously
+			"path": "aristotles_comedy:iron_golem_pumpkin_sketch",
+			"effect": "aristotles_comedy:invisible_ink", // only visible if player is next to / looking at candle / torch / fire
+		},
+		// all contents will likely also have a position offset argument
+	],
+}

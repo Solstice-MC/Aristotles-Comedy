@@ -19,14 +19,18 @@ public class AristotlesComedy implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		AristotlesHumors.init();
+		AristotlesResearchContentTypes.init();
+
 		AristotlesRegistryKeys.init();
 		AristotlesRegistries.init();
+		AristotlesPackets.init();
+
 		AristotlesComponentTypes.init();
 
 		AristotlesRecipeTypes.init();
 		AristotlesRecipeSerializers.init();
 
-		AristotlesHumors.init();
 		AristotlesBlocks.init();
 		AristotlesItems.init();
 		AristotlesEntityTypes.init();

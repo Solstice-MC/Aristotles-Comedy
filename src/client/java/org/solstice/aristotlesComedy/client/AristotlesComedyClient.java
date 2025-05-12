@@ -1,5 +1,6 @@
 package org.solstice.aristotlesComedy.client;
 
+import org.solstice.aristotlesComedy.client.registry.AristotlesClientPackets;
 import org.solstice.aristotlesComedy.client.registry.AristotlesEntityRenderers;
 import org.solstice.aristotlesComedy.registry.AristotlesBlocks;
 import net.fabricmc.api.ClientModInitializer;
@@ -20,6 +21,7 @@ public class AristotlesComedyClient implements ClientModInitializer {
 			AristotlesBlocks.BRAZIER,
 			AristotlesBlocks.SOUL_BRAZIER
 		);
+		AristotlesClientPackets.init();
 	}
 
 }

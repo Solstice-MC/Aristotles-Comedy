@@ -17,9 +17,9 @@ public class AristotlesBlocks {
 
     public static void init() {}
 
-	public static final Block GLASS_TANK = register("glass_tank", settings -> new TankBlock(settings), AbstractBlock.Settings.copy(Blocks.GLASS));
-	public static final Block BRONZE_TANK = register("bronze_tank", settings -> new TankBlock(settings), AbstractBlock.Settings.copy(Blocks.IRON_BLOCK));
-	public static final Block BRONZE_PIPE = register("bronze_pipe", settings -> new PipeBlock(settings), AbstractBlock.Settings.copy(Blocks.IRON_BLOCK));
+	public static final Block GLASS_TANK = register("glass_tank", TankBlock::new, AbstractBlock.Settings.copy(Blocks.GLASS));
+	public static final Block BRONZE_TANK = register("bronze_tank", TankBlock::new, AbstractBlock.Settings.copy(Blocks.IRON_BLOCK));
+	public static final Block BRONZE_PIPE = register("bronze_pipe", PipeBlock::new, AbstractBlock.Settings.copy(Blocks.IRON_BLOCK));
 
 	public static final Block YELLOW_TRISMEGISTITE_BLOCK = register("yellow_trismegistite_block", AbstractBlock.Settings.copy(Blocks.AMETHYST_BLOCK));
 	public static final Block RED_TRISMEGISTITE_BLOCK = register("red_trismegistite_block", AbstractBlock.Settings.copy(Blocks.AMETHYST_BLOCK));
@@ -50,7 +50,7 @@ public class AristotlesBlocks {
 
 	public static final Block DEEPSLATE_ZINC_ORE = register("deepslate_tin_ore", AbstractBlock.Settings.copy(Blocks.DEEPSLATE_COPPER_ORE));
     public static final Block TIN_ORE = register("tin_ore", AbstractBlock.Settings.copy(Blocks.COPPER_ORE));
-	public static final Block NETHER_LEAD_ORE = register("nether_lead_ore", AbstractBlock.Settings.copy(Blocks.IRON_ORE));
+	public static final Block BLACKSTONE_LEAD_ORE = register("blackstone_lead_ore", AbstractBlock.Settings.copy(Blocks.IRON_ORE));
 
 	public static final Block LEAD_BARREL = register("lead_barrel", PillarBlock::new, AbstractBlock.Settings.copy(Blocks.GOLD_BLOCK));
 	public static final Block LEAD_BARS = register("lead_bars", PaneBlock::new, AbstractBlock.Settings.copy(Blocks.IRON_BARS));
@@ -67,6 +67,8 @@ public class AristotlesBlocks {
 	public static final Block ATHANOR = register("athanor", AthanorBlock::new, AbstractBlock.Settings.copy(Blocks.FURNACE));
 
 	public static final Block ALEMBIC = register("alembic", AlembicBlock::new, AbstractBlock.Settings.copy(Blocks.GLASS));
+
+	public static final Block SERPENTINE_PEDESTAL = register("serpentine_pedestal", LecternBlock::new, AbstractBlock.Settings.copy(Blocks.LECTERN));
 
 	public static Block register(String name, AbstractBlock.Settings settings) {
 		return register(name, Block::new, settings);

@@ -1,0 +1,10 @@
+{
+	"type": "minecraft:campfire_cooking",
+	"category": "misc",
+
+	"ingredient": { "item": "aristotles_comedy:archatame" },
+
+	"result": {
+		"id": "minecraft:white_dye"
+	}
+}

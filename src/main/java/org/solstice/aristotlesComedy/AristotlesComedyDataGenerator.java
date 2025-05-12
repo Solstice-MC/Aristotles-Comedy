@@ -3,6 +3,7 @@ package org.solstice.aristotlesComedy;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.block.Block;
+import net.minecraft.block.LecternBlock;
 import net.minecraft.data.client.*;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
@@ -21,13 +22,18 @@ public class AristotlesComedyDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(AutoLanguageGenerator::new);
 		pack.addProvider(AutoModelGenerator::new);
 		pack.addProvider(AutoLootTableGenerator::new);
-//		pack.addProvider(ACRecipeProvider::new);
-//		pack.addProvider(ACAdvancementProvider::new);
 
-		BlockModelSupplier.register(BrazierBlock.class, AristotlesComedyDataGenerator::registerBrazier);
+		BlockModelSupplier.register(LecternBlock.class, AristotlesComedyDataGenerator::registerRotatable);
 		BlockModelSupplier.register(TankBlock.class, AristotlesComedyDataGenerator::registerTank);
 		BlockModelSupplier.register(PipeBlock.class, AristotlesComedyDataGenerator::registerPipe);
 		BlockModelSupplier.register(ClusterBlock.class, AristotlesComedyDataGenerator::registerCluster);
+		BlockModelSupplier.register(BrazierBlock.class, AristotlesComedyDataGenerator::registerBrazier);
+
+	}
+
+	public static void registerRotatable(BlockStateModelGenerator generator, Block block, Identifier id) {
+		generator.registerNorthDefaultHorizontalRotation(block);
+		generator.registerParentedItemModel(block, id);
 	}
 
 	public static void registerPipe(BlockStateModelGenerator generator, Block block, Identifier id) {
