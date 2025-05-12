@@ -13,7 +13,6 @@ public class Vec2i {
 
     public static Vec2i ZERO = new Vec2i(0, 0);
 
-
     public int x;
     public int y;
 

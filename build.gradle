@@ -13,13 +13,6 @@ repositories {
 
 loom {
 	accessWidenerPath = file("src/main/resources/aristotles_comedy.accesswidener")
-	splitEnvironmentSourceSets()
-	mods {
-		"aristotles_comedy" {
-			sourceSet sourceSets.main
-			sourceSet sourceSets.client
-		}
-	}
 }
 
 fabricApi {

@@ -2,9 +2,13 @@ package org.solstice.aristotlesComedy.content.research.content;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextCodecs;
 import net.minecraft.util.Identifier;
+import org.solstice.aristotlesComedy.content.research.Researchable;
 import org.solstice.aristotlesComedy.util.Vec2i;
 
 public record ImageContent (
@@ -31,6 +35,19 @@ public record ImageContent (
 	@Override
 	public Definition getDefinition() {
 		return this.definition;
+	}
+
+	@Override
+	public void render(RegistryEntry<Researchable> entry, Screen screen, DrawContext context, Vec2i start, Vec2i mouse, float delta) {
+		Identifier texture = this.path.withPrefixedPath("gui/researchable/").withSuffixedPath(".png");
+		Vec2i size = entry.value().size();
+		context.drawTexture(
+			texture,
+			start.x, start.y,
+			0, 0,
+			size.x, size.y,
+			size.x, size.y
+		);
 	}
 
 }

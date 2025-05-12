@@ -2,12 +2,14 @@ package org.solstice.aristotlesComedy.content.packet;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.registry.entry.RegistryEntry;
 import org.solstice.aristotlesComedy.AristotlesComedy;
+import org.solstice.aristotlesComedy.client.content.screen.ResearchableScreen;
 import org.solstice.aristotlesComedy.content.research.Researchable;
 
 public record OpenResearchableScreenPacket(RegistryEntry<Researchable> entry) implements CustomPayload {
@@ -23,6 +25,10 @@ public record OpenResearchableScreenPacket(RegistryEntry<Researchable> entry) im
 	@Override
 	public Id<? extends CustomPayload> getId() {
 		return ID;
+	}
+
+	public static void openResearchableScreen(OpenResearchableScreenPacket packet, ClientPlayNetworking.Context context) {
+		context.client().setScreen(new ResearchableScreen(packet.entry()));
 	}
 
 }

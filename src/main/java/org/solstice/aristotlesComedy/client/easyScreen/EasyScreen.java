@@ -1,4 +1,4 @@
-package org.solstice.aristotlesComedy.client.api.easyScreen;
+package org.solstice.aristotlesComedy.client.easyScreen;
 
 import net.minecraft.client.gui.screen.Screen;
 

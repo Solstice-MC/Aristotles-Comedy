@@ -20,11 +20,7 @@
 		"fabric-datagen": [ "org.solstice.aristotlesComedy.AristotlesComedyDataGenerator" ]
 	},
 	"mixins": [
-		"aristotles_comedy.mixins.json",
-		{
-			"config": "aristotles_comedy.client.mixins.json",
-			"environment": "client"
-		}
+		"aristotles_comedy.mixins.json"
 	],
 	"accessWidener": "aristotles_comedy.accesswidener",
 	"custom": {
