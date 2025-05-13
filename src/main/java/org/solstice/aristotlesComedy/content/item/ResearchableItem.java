@@ -26,7 +26,7 @@ public class ResearchableItem extends Item {
 		RegistryEntry<Researchable> entry = stack.getOrDefault(AristotlesComponentTypes.RESEARCHABLE, null);
 		if (entry == null) return TypedActionResult.pass(stack);
 
-		if (!world.isClient) ServerPlayNetworking.send((ServerPlayerEntity)player, new OpenResearchableScreenPacket(entry));
+		if (!world.isClient) ServerPlayNetworking.send((ServerPlayerEntity)player, new OpenResearchableScreenPacket(stack, entry));
 		player.incrementStat(Stats.USED.getOrCreateStat(this));
 		return TypedActionResult.success(stack, world.isClient());
 	}

@@ -2,8 +2,6 @@ package org.solstice.aristotlesComedy.content.research;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
@@ -11,6 +9,7 @@ import net.minecraft.registry.entry.RegistryElementCodec;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.StringIdentifiable;
+import org.solstice.aristotlesComedy.client.content.research.ResearchableRenderContext;
 import org.solstice.aristotlesComedy.content.research.content.ResearchContent;
 import org.solstice.aristotlesComedy.registry.AristotlesRegistryKeys;
 import org.solstice.aristotlesComedy.util.Vec2i;
@@ -53,14 +52,16 @@ public record Researchable (
 
 	}
 
-	public void render(RegistryEntry<Researchable> entry, Screen screen, DrawContext context, Vec2i start, Vec2i mouse, float delta) {
+	public void render(ResearchableRenderContext renderContext) {
+		RegistryEntry<Researchable> entry = renderContext.entry();
 		Identifier background = getFrontTexture(entry);
 		Vec2i size = entry.value().size();
+		Vec2i start = renderContext.start();
 		start = start.add(
-			(screen.width - size.x) / 2,
-			(screen.height - size.y) / 2
+			(renderContext.screen().width - size.x) / 2,
+			(renderContext.screen().height - size.y) / 2
 		);
-		context.drawTexture(
+		renderContext.drawContext().drawTexture(
 			background,
 			start.x,
 			start.y,
@@ -69,10 +70,12 @@ public record Researchable (
 			size.x, size.y
 		);
 
+		ResearchableRenderContext newRenderContext = new ResearchableRenderContext(
+			renderContext.player(), renderContext.stack(), renderContext.entry(), renderContext.screen(), renderContext.drawContext(), start, renderContext.mouse(), renderContext.renderTick(), renderContext.renderTick()
+		);
 		Researchable researchable = entry.value();
-		Vec2i contentStart = start;
 		researchable.contents().forEach(content ->
-			content.render(entry, screen, context, contentStart, mouse, delta)
+			content.render(newRenderContext)
 		);
 	}
 

@@ -3,8 +3,15 @@
 	"size": [128, 128],
 	"contents": [
 		{
-			"type": "aristotles_comedy:text",
-			"text": { "translate": "research_note.aristotles_comedy.iron_golem.description" }
+			"type": "aristotles_comedy:translated_text",
+			"original_text": {
+				"text": "what the hell is this even supposed to mean",
+				"font": "minecraft:illageralt"
+			},
+			"translated_text": {
+				"translate": "research_note.aristotles_comedy.iron_golem.description"
+			},
+			"offset": [8, 8]
 		},
 		{
 			"type": "aristotles_comedy:image",

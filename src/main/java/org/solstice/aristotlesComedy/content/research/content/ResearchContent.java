@@ -3,10 +3,9 @@ package org.solstice.aristotlesComedy.content.research.content;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.registry.entry.RegistryEntry;
-import org.solstice.aristotlesComedy.content.research.Researchable;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import org.solstice.aristotlesComedy.client.content.research.ResearchableRenderContext;
 import org.solstice.aristotlesComedy.registry.AristotlesRegistries;
 import org.solstice.aristotlesComedy.util.Vec2i;
 
@@ -18,14 +17,15 @@ public interface ResearchContent {
 	Type getType();
 	Definition getDefinition();
 
-	void render(RegistryEntry<Researchable> entry, Screen screen, DrawContext context, Vec2i start, Vec2i mouse, float delta);
+	@Environment(EnvType.CLIENT)
+	void render(ResearchableRenderContext renderContext);
 
 	record Type(MapCodec<? extends ResearchContent> codec) {}
 
-	record Definition (String test) {
+	record Definition(Vec2i offset) {
 
 		public static final MapCodec<Definition> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-			Codec.STRING.optionalFieldOf("test", "test").forGetter(Definition::test)
+			Vec2i.CODEC.optionalFieldOf("offset", Vec2i.ZERO).forGetter(Definition::offset)
 		).apply(instance, Definition::new));
 
 	}

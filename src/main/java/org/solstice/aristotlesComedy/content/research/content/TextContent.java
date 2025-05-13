@@ -2,12 +2,13 @@ package org.solstice.aristotlesComedy.content.research.content;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextCodecs;
-import org.solstice.aristotlesComedy.content.research.Researchable;
+import org.solstice.aristotlesComedy.client.content.research.ResearchableRenderContext;
 import org.solstice.aristotlesComedy.util.Vec2i;
 
 public record TextContent (
@@ -33,16 +34,26 @@ public record TextContent (
 	}
 
 	@Override
-	public void render(RegistryEntry<Researchable> entry, Screen screen, DrawContext context, Vec2i start, Vec2i mouse, float delta) {
-		Vec2i size = entry.value().size();
-		context.drawText(
-			screen.textRenderer,
+	@Environment(EnvType.CLIENT)
+	public void render(ResearchableRenderContext renderContext) {
+		Vec2i start = renderContext.start();
+		MatrixStack matrices = renderContext.drawContext().getMatrices();
+		matrices.push();
+		matrices.translate((float)start.x / 2, (float)start.y / 2, 0);
+		matrices.scale(0.5F, 0.5F, 1);
+		renderContext.screen().textRenderer.draw(
 			this.text,
-			start.x,
-			start.y,
+			start.x + this.definition.offset().x,
+			start.y + this.definition.offset().y,
 			0xFFFFFF,
-			true
+			true,
+			matrices.peek().getPositionMatrix(),
+			renderContext.drawContext().getVertexConsumers(),
+			TextRenderer.TextLayerType.NORMAL,
+			0,
+			15728880
 		);
+		matrices.pop();
 	}
 
 }
