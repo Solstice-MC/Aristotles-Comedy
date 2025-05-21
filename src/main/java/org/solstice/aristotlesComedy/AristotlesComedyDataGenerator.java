@@ -8,8 +8,8 @@ import net.minecraft.data.client.*;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import org.solstice.aristotlesComedy.content.block.*;
-import org.solstice.euclidsElements.api.autoDataGen.generator.*;
-import org.solstice.euclidsElements.api.autoDataGen.supplier.BlockModelSupplier;
+import org.solstice.euclidsElements.autoDatagen.api.generator.*;
+import org.solstice.euclidsElements.autoDatagen.api.supplier.BlockModelSupplier;
 
 import java.util.Optional;
 
@@ -28,7 +28,6 @@ public class AristotlesComedyDataGenerator implements DataGeneratorEntrypoint {
 		BlockModelSupplier.register(PipeBlock.class, AristotlesComedyDataGenerator::registerPipe);
 		BlockModelSupplier.register(ClusterBlock.class, AristotlesComedyDataGenerator::registerCluster);
 		BlockModelSupplier.register(BrazierBlock.class, AristotlesComedyDataGenerator::registerBrazier);
-
 	}
 
 	public static void registerRotatable(BlockStateModelGenerator generator, Block block, Identifier id) {

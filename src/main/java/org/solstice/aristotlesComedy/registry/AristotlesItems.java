@@ -1,5 +1,6 @@
 package org.solstice.aristotlesComedy.registry;
 
+import net.minecraft.util.Rarity;
 import org.solstice.aristotlesComedy.AristotlesComedy;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.item.Item;
@@ -10,6 +11,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import org.solstice.aristotlesComedy.content.item.ResearchableItem;
+import org.solstice.aristotlesComedy.content.item.WrenchItem;
 
 import java.util.function.Function;
 
@@ -19,6 +21,8 @@ public class AristotlesItems {
 
 	public static final FoodComponent ASH_SOUP_FOOD_COMPONENT = new FoodComponent.Builder()
 		.nutrition(-2).saturationModifier(-0.2f).alwaysEdible().usingConvertsTo(Items.BOWL).build();
+
+	public static final Item BRONZE_WRENCH = register("bronze_wrench", WrenchItem::new);
 
 	public static final Item ARCHATAME = register("archatame");
 	public static final Item RESEARCH_NOTES = register("research_notes", ResearchableItem::new);
@@ -43,6 +47,13 @@ public class AristotlesItems {
 
 	public static final Item ASH_SOUP = register("ash_soup", Item::new, new Item.Settings()
 		.food(ASH_SOUP_FOOD_COMPONENT)
+	);
+
+	public static final Item MUSIC_DISC_SCARICO_IN_VINILE = register("music_disc_scarico_in_vinile", Item::new,
+		new Item.Settings()
+			.maxCount(1)
+			.rarity(Rarity.RARE)
+			.jukeboxPlayable(AristotlesJukeboxSongs.SCARICO_IN_VINILE)
 	);
 
 	public static Item register(String name) {

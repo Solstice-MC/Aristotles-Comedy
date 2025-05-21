@@ -22,6 +22,9 @@ public class AristotlesComedy implements ModInitializer {
 		AristotlesHumors.init();
 		AristotlesResearchContentTypes.init();
 
+		AristotlesSoundEvents.init();
+		AristotlesJukeboxSongs.init();
+
 		AristotlesRegistryKeys.init();
 		AristotlesRegistries.init();
 		AristotlesPackets.init();

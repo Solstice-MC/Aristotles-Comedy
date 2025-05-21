@@ -7,6 +7,7 @@ import net.minecraft.util.Identifier;
 import org.solstice.aristotlesComedy.AristotlesComedy;
 import org.solstice.aristotlesComedy.content.block.entity.AlembicBlockEntity;
 import org.solstice.aristotlesComedy.content.block.entity.SabikaBlockEntity;
+import org.solstice.aristotlesComedy.content.block.entity.SacredHeartBlockEntity;
 
 public class AristotlesBlockEntities {
 
@@ -17,6 +18,9 @@ public class AristotlesBlockEntities {
 	);
 	public static final BlockEntityType<AlembicBlockEntity> ALEMBIC = register("alembic",
 		BlockEntityType.Builder.create(AlembicBlockEntity::new, AristotlesBlocks.ALEMBIC).build()
+	);
+	public static final BlockEntityType<SacredHeartBlockEntity> SACRED_HEART = register("sacred_heart",
+		BlockEntityType.Builder.create(SacredHeartBlockEntity::new, AristotlesBlocks.SACRED_HEART, AristotlesBlocks.PHILOSOPHERS_STONE).build()
 	);
 
 	public static <T extends BlockEntityType<?>> T register(String name, T type) {

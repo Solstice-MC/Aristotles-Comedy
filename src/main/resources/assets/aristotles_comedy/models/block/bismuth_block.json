@@ -1,0 +1,6 @@
+{
+	"parent": "aristotles_comedy:block/template/tintable",
+	"textures": {
+		"all": "aristotles_comedy:block/bismuth_block"
+	}
+}

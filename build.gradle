@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.9-SNAPSHOT'
+	id 'fabric-loom' version '1.10-SNAPSHOT'
 }
 
 base.archivesName = project.mod_id
@@ -7,8 +7,8 @@ version = project.mod_version
 group = project.mod_group
 
 repositories {
-	maven { url "https://dl.cloudsmith.io/public/solstice-mc/artifacts/maven/" }
 	mavenLocal()
+	maven { url "https://dl.cloudsmith.io/public/solstice-mc/artifacts/maven/" }
 }
 
 loom {
@@ -24,7 +24,12 @@ dependencies {
 	mappings "net.fabricmc:yarn:$yarn_mappings:v2"
 	modImplementation "net.fabricmc:fabric-loader:$loader_version"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_version"
-	modImplementation "org.solstice:euclids-elements:$euclids_elements_version"
+//	modImplementation "org.solstice.euclids-elements:euclids-elements:$euclids_elements_version"
+	modImplementation "org.solstice.euclids-elements:euclids-base-api:1.0.0"
+	modImplementation "org.solstice.euclids-elements:euclids-auto-datagen-api:1.0.0"
+	modImplementation "org.solstice.euclids-elements:euclids-component-holder-api:1.0.0"
+	modImplementation "org.solstice.euclids-elements:euclids-effect-holder-api:1.0.0"
+//	modImplementation "org.solstice.euclids-elements:euclids-map-tag-api:1.0.0"
 }
 
 processResources {

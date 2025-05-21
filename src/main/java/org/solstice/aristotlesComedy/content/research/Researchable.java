@@ -12,7 +12,7 @@ import net.minecraft.util.StringIdentifiable;
 import org.solstice.aristotlesComedy.client.content.research.ResearchableRenderContext;
 import org.solstice.aristotlesComedy.content.research.content.ResearchContent;
 import org.solstice.aristotlesComedy.registry.AristotlesRegistryKeys;
-import org.solstice.aristotlesComedy.util.Vec2i;
+import org.solstice.euclidsElements.util.Vec2i;
 
 import java.util.List;
 

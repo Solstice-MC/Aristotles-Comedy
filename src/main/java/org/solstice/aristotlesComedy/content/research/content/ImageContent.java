@@ -10,7 +10,7 @@ import net.minecraft.text.TextCodecs;
 import net.minecraft.util.Identifier;
 import org.solstice.aristotlesComedy.client.content.research.ResearchableRenderContext;
 import org.solstice.aristotlesComedy.content.research.Researchable;
-import org.solstice.aristotlesComedy.util.Vec2i;
+import org.solstice.euclidsElements.util.Vec2i;
 
 public record ImageContent (
 	Identifier path,

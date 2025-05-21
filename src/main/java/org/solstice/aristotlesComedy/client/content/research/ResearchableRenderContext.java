@@ -6,7 +6,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
 import org.solstice.aristotlesComedy.content.research.Researchable;
-import org.solstice.aristotlesComedy.util.Vec2i;
+import org.solstice.euclidsElements.util.Vec2i;
 
 public record ResearchableRenderContext (
 	PlayerEntity player,

@@ -9,7 +9,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextCodecs;
 import org.solstice.aristotlesComedy.client.content.research.ResearchableRenderContext;
-import org.solstice.aristotlesComedy.util.Vec2i;
+import org.solstice.euclidsElements.util.Vec2i;
 
 public record TextContent (
 	Text text,

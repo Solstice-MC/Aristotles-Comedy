@@ -12,7 +12,7 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TextCodecs;
 import net.minecraft.util.math.MathHelper;
 import org.solstice.aristotlesComedy.client.content.research.ResearchableRenderContext;
-import org.solstice.aristotlesComedy.util.Vec2i;
+import org.solstice.euclidsElements.util.Vec2i;
 
 import java.awt.*;
 

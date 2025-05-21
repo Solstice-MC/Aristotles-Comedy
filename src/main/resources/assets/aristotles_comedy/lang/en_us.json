@@ -2,6 +2,9 @@
 	"mod.aristotles_comedy": "Aristotle's Comedy",
 	"item_group.aristotles_comedy.main": "Aristotle's Comedy",
 
+	"item.aristotles_comedy.music_disc_scarico_in_vinile": "Music Disc",
+	"jukebox_song.aristotles_comedy.scarico_in_vinile": "NC-239 - Scarico in Vinile",
+
 	"research_note.aristotles_comedy.iron_golem.description": "Testing the text system (localized)",
 
 	"advancements.aristotles_comedy.alchemy.title": "Alchemy",

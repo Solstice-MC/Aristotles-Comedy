@@ -13,6 +13,10 @@ public class AristotlesSoundEvents {
 
 	public static final SoundEvent ENTITY_ASH_BUNNY_POOF = register("entity.ash_bunny.poof");
 
+	public static final SoundEvent BLOCK_SACRED_HEART_HEARTBEAT = register("block.sacred_heart.heartbeat");
+
+	public static final SoundEvent MUSIC_DISC_SCARICO_IN_VINILE = register("music_disc.scarico_in_vinile");
+
 	public static SoundEvent register(String name) {
 		Identifier id = AristotlesComedy.of(name);
 		return Registry.register(Registries.SOUND_EVENT, id, SoundEvent.of(id));

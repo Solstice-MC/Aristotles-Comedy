@@ -57,8 +57,8 @@ public class AristotlesBlocks {
 	public static final Block BRAZIER = register("brazier", settings -> new BrazierBlock(true, settings), AbstractBlock.Settings.copy(Blocks.IRON_BARS));
 	public static final Block SOUL_BRAZIER = register("soul_brazier", settings -> new BrazierBlock(false, settings), AbstractBlock.Settings.copy(Blocks.IRON_BARS));
 
-	public static final Block SACRED_HEART = register("sacred_heart", PhilosopherStoneBlock::new, AbstractBlock.Settings.create());
-	public static final Block PHILOSOPHERS_STONE = register("philosophers_stone", PhilosopherStoneBlock::new, AbstractBlock.Settings.create());
+	public static final Block SACRED_HEART = register("sacred_heart", SacredHeartBlock::new, AbstractBlock.Settings.create());
+	public static final Block PHILOSOPHERS_STONE = register("philosophers_stone", SacredHeartBlock::new, AbstractBlock.Settings.create());
 	public static final Block ASH = register("ash", SnowBlock::new, AbstractBlock.Settings.copy(Blocks.SNOW));
 	public static final Block ASH_BLOCK = register("ash_block", Block::new, AbstractBlock.Settings.copy(Blocks.SNOW_BLOCK));
 	public static final Block NUMITRON = register("numitron", NumitronBlock::new, AbstractBlock.Settings.copy(Blocks.GLASS).luminance(s -> 2));
@@ -67,6 +67,8 @@ public class AristotlesBlocks {
 	public static final Block ATHANOR = register("athanor", AthanorBlock::new, AbstractBlock.Settings.copy(Blocks.FURNACE));
 
 	public static final Block ALEMBIC = register("alembic", AlembicBlock::new, AbstractBlock.Settings.copy(Blocks.GLASS));
+
+	public static final Block BISMUTH_BLOCK = register("bismuth_block", Block::new, AbstractBlock.Settings.copy(Blocks.COPPER_BLOCK));
 
 	public static final Block SERPENTINE_PEDESTAL = register("serpentine_pedestal", LecternBlock::new, AbstractBlock.Settings.copy(Blocks.LECTERN));
 

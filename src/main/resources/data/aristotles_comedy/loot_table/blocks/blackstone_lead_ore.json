@@ -26,7 +26,7 @@
 									}
 								}
 							],
-							"name": "aristotles_comedy:nether_lead_ore"
+							"name": "aristotles_comedy:blackstone_lead_ore"
 						},
 						{
 							"type": "minecraft:item",
@@ -48,5 +48,5 @@
 			"rolls": 1.0
 		}
 	],
-	"random_sequence": "aristotles_comedy:blocks/nether_lead_ore"
+	"random_sequence": "aristotles_comedy:blocks/blackstone_lead_ore"
 }

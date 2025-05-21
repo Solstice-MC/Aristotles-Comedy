@@ -1,0 +1,9 @@
+{
+	"description": {
+		"translate": "jukebox_song.aristotles_comedy.scarico_in_vinile"
+	},
+
+	"sound_event": "aristotles_comedy:music_disc.scarico_in_vinile",
+	"comparator_output": 15,
+	"length_in_seconds": 167.0
+}
