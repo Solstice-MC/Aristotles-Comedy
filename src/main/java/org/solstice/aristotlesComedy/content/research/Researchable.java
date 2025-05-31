@@ -7,12 +7,13 @@ import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.registry.entry.RegistryElementCodec;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.StringIdentifiable;
-import org.solstice.aristotlesComedy.client.content.research.ResearchableRenderContext;
+import org.solstice.aristotlesComedy.client.content.screen.ResearchableRenderContext;
 import org.solstice.aristotlesComedy.content.research.content.ResearchContent;
 import org.solstice.aristotlesComedy.registry.AristotlesRegistryKeys;
-import org.solstice.euclidsElements.util.Vec2i;
+import org.solstice.euclidsElements.util.type.Vec2i;
 
 import java.util.List;
 
@@ -56,11 +57,7 @@ public record Researchable (
 		RegistryEntry<Researchable> entry = renderContext.entry();
 		Identifier background = getFrontTexture(entry);
 		Vec2i size = entry.value().size();
-		Vec2i start = renderContext.start();
-		start = start.add(
-			(renderContext.screen().width - size.x) / 2,
-			(renderContext.screen().height - size.y) / 2
-		);
+		Vec2i start = renderContext.startPos();
 		renderContext.drawContext().drawTexture(
 			background,
 			start.x,
@@ -70,17 +67,20 @@ public record Researchable (
 			size.x, size.y
 		);
 
-		ResearchableRenderContext newRenderContext = new ResearchableRenderContext(
-			renderContext.player(), renderContext.stack(), renderContext.entry(), renderContext.screen(), renderContext.drawContext(), start, renderContext.mouse(), renderContext.renderTick(), renderContext.renderTick()
-		);
 		Researchable researchable = entry.value();
-		researchable.contents().forEach(content ->
-			content.render(newRenderContext)
-		);
+		researchable.contents().forEach(content -> {
+
+			content.render(renderContext);
+		});
 	}
 
 	public static Identifier getFrontTexture(RegistryEntry<Researchable> entry) {
-		return entry.getKey().orElseThrow().getValue().withPrefixedPath("gui/researchable/").withSuffixedPath("_front.png");
+		return entry.getKey().orElseThrow().getValue().withPrefixedPath("textures/gui/researchable/").withSuffixedPath("_front.png");
+	}
+
+	public static Text getName(RegistryEntry<Researchable> entry) {
+		String key = entry.getKey().orElseThrow().getValue().toTranslationKey("researchable");
+		return Text.translatable(key);
 	}
 
 }

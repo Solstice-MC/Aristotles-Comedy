@@ -2,18 +2,18 @@
 	"type": "minecraft:crafting_shaped",
 	"category": "misc",
 
-	"key": {
-		"#": { "item": "minecraft:copper_ingot" },
-		"I": { "item": "minecraft:sandstone" }
-	},
 	"pattern": [
-		"III",
-		"I I",
-		"###"
+		"I#I",
+		"#X#",
+		"III"
 	],
+	"key": {
+		"#": { "item": "minecraft:sandstone" },
+		"I": { "item": "minecraft:copper_ingot" },
+		"X": { "item": "minecraft:furnace" }
+	},
 
 	"result": {
-		"count": 1,
-		"id": "minecraft:blast_furnace"
+		"id": "aristotles_comedy:sabika"
 	}
 }

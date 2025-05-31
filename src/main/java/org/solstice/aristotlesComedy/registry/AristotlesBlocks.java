@@ -1,5 +1,10 @@
 package org.solstice.aristotlesComedy.registry;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.minecraft.client.render.RenderLayer;
 import org.solstice.aristotlesComedy.AristotlesComedy;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -9,6 +14,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+import org.solstice.aristotlesComedy.client.AristotlesComedyClient;
 import org.solstice.aristotlesComedy.content.block.*;
 
 import java.util.function.Function;
@@ -16,6 +22,22 @@ import java.util.function.Function;
 public class AristotlesBlocks {
 
     public static void init() {}
+
+	@Environment(EnvType.CLIENT)
+	public static void clientInit() {
+		ColorProviderRegistry.BLOCK.register(AristotlesComedyClient::test, AristotlesBlocks.BISMUTH_BLOCK);
+		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
+			AristotlesBlocks.YELLOW_TRISMEGISTITE_CLUSTER,
+			AristotlesBlocks.RED_TRISMEGISTITE_CLUSTER,
+			AristotlesBlocks.BLUE_TRISMEGISTITE_CLUSTER,
+			AristotlesBlocks.BLACK_TRISMEGISTITE_CLUSTER,
+
+			AristotlesBlocks.BRAZIER,
+			AristotlesBlocks.SOUL_BRAZIER
+		);
+	}
+
+	public static final Block RESEARCH = register("research", ResearchBlock::new, AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE));
 
 	public static final Block GLASS_TANK = register("glass_tank", TankBlock::new, AbstractBlock.Settings.copy(Blocks.GLASS));
 	public static final Block BRONZE_TANK = register("bronze_tank", TankBlock::new, AbstractBlock.Settings.copy(Blocks.IRON_BLOCK));
@@ -65,8 +87,6 @@ public class AristotlesBlocks {
 
 	public static final Block SABIKA = register("sabika", SabikaBlock::new, AbstractBlock.Settings.copy(Blocks.FURNACE));
 	public static final Block ATHANOR = register("athanor", AthanorBlock::new, AbstractBlock.Settings.copy(Blocks.FURNACE));
-
-	public static final Block ALEMBIC = register("alembic", AlembicBlock::new, AbstractBlock.Settings.copy(Blocks.GLASS));
 
 	public static final Block BISMUTH_BLOCK = register("bismuth_block", Block::new, AbstractBlock.Settings.copy(Blocks.COPPER_BLOCK));
 

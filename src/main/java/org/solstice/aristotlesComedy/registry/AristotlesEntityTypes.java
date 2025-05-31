@@ -1,6 +1,15 @@
 package org.solstice.aristotlesComedy.registry;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.render.entity.FallingBlockEntityRenderer;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
 import org.solstice.aristotlesComedy.AristotlesComedy;
+import org.solstice.aristotlesComedy.client.content.entity.model.AshBunnyModel;
+import org.solstice.aristotlesComedy.client.content.entity.renderer.AshBunnyRenderer;
+import org.solstice.aristotlesComedy.content.block.entity.SturdyFallingBlockEntity;
 import org.solstice.aristotlesComedy.content.entity.AshBunnyEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.entity.Entity;
@@ -14,14 +23,36 @@ import net.minecraft.util.Identifier;
 
 public class AristotlesEntityTypes {
 
+	public static final Identifier ASH_BUNNY_ID = AristotlesComedy.of("ash_bunny");
+	public static final EntityModelLayer ASH_BUNNY_LAYER = new EntityModelLayer(ASH_BUNNY_ID, "main");
+
 	public static void init() {
 		FabricDefaultAttributeRegistry.register(ASH_BUNNY, AshBunnyEntity.createAshBunnyAttributes());
+	}
+
+	@Environment(EnvType.CLIENT)
+	public static void clientInit() {
+		EntityRendererRegistry.register(ASH_BUNNY,
+			context -> new AshBunnyRenderer(context, new AshBunnyModel(context.getPart(ASH_BUNNY_LAYER)))
+		);
+		EntityRendererRegistry.register(STURDY_FALLING_BLOCK,
+			FallingBlockEntityRenderer::new
+		);
+		EntityModelLayerRegistry.registerModelLayer(ASH_BUNNY_LAYER, AshBunnyModel::getTexturedModelData);
+
 	}
 
 	public static final EntityType<AshBunnyEntity> ASH_BUNNY = register("ash_bunny",
 		EntityType.Builder.create(AshBunnyEntity::new, SpawnGroup.CREATURE)
 			.dimensions(0.5f, 0.5f)
 			.maxTrackingRange(10)
+	);
+
+	public static final EntityType<SturdyFallingBlockEntity> STURDY_FALLING_BLOCK = register("sturdy_falling_block",
+		EntityType.Builder.<SturdyFallingBlockEntity>create(SturdyFallingBlockEntity::new, SpawnGroup.MISC)
+			.dimensions(0.98F, 0.98F)
+			.maxTrackingRange(10)
+			.trackingTickInterval(20)
 	);
 
 	private static <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> builder) {

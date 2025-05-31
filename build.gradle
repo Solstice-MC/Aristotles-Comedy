@@ -24,17 +24,26 @@ dependencies {
 	mappings "net.fabricmc:yarn:$yarn_mappings:v2"
 	modImplementation "net.fabricmc:fabric-loader:$loader_version"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_version"
+	modImplementation "org.solstice.euclids-elements:euclids-base-api:0.1.0"
+	modImplementation "org.solstice.euclids-elements:euclids-content:0.1.1"
+	modImplementation "org.solstice.euclids-elements:euclids-auto-datagen-api:0.1.0"
+	modImplementation "org.solstice.euclids-elements:euclids-component-holder-api:0.1.0"
+	modImplementation "org.solstice.euclids-elements:euclids-effect-holder-api:0.1.0"
+	modImplementation "org.solstice.euclids-elements:euclids-map-tag-api:0.1.0"
 //	modImplementation "org.solstice.euclids-elements:euclids-elements:$euclids_elements_version"
-	modImplementation "org.solstice.euclids-elements:euclids-base-api:1.0.0"
-	modImplementation "org.solstice.euclids-elements:euclids-auto-datagen-api:1.0.0"
-	modImplementation "org.solstice.euclids-elements:euclids-component-holder-api:1.0.0"
-	modImplementation "org.solstice.euclids-elements:euclids-effect-holder-api:1.0.0"
-//	modImplementation "org.solstice.euclids-elements:euclids-map-tag-api:1.0.0"
 }
 
 processResources {
-	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	duplicatesStrategy = DuplicatesStrategy.INCLUDE
 	filesMatching("fabric.mod.json") {
 		expand project.properties
+	}
+}
+
+afterEvaluate {
+	loom.runs.configureEach {
+		vmArgs "-XX:+IgnoreUnrecognizedVMOptions",
+			"-XX:+AllowEnhancedClassRedefinition",
+			"-javaagent:${configurations.compileClasspath.find { it.name.contains("sponge-mixin") }}"
 	}
 }

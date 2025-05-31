@@ -8,8 +8,8 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextCodecs;
-import org.solstice.aristotlesComedy.client.content.research.ResearchableRenderContext;
-import org.solstice.euclidsElements.util.Vec2i;
+import org.solstice.aristotlesComedy.client.content.screen.ResearchableRenderContext;
+import org.solstice.euclidsElements.util.type.Vec2i;
 
 public record TextContent (
 	Text text,
@@ -36,7 +36,7 @@ public record TextContent (
 	@Override
 	@Environment(EnvType.CLIENT)
 	public void render(ResearchableRenderContext renderContext) {
-		Vec2i start = renderContext.start();
+		Vec2i start = renderContext.startPos();
 		MatrixStack matrices = renderContext.drawContext().getMatrices();
 		matrices.push();
 		matrices.translate((float)start.x / 2, (float)start.y / 2, 0);

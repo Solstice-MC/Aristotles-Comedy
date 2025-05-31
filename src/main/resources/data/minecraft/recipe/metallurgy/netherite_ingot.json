@@ -1,0 +1,15 @@
+{
+	"type": "aristotles_comedy:metallurgy",
+
+	"ingredient": {
+		"item": "minecraft:gold_ingot"
+	},
+	"addition": {
+		"ingredient": { "item": "minecraft:netherite_scrap" },
+		"amount": 3
+	},
+
+	"result": {
+		"id": "minecraft:netherite_ingot"
+	}
+}

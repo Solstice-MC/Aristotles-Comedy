@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:item/handheld",
+	"textures": {
+		"layer0": "aristotles_comedy:item/magnifying_glass"
+	}
+}

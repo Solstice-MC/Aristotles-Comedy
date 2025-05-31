@@ -11,8 +11,8 @@ public class AristotlesJukeboxSongs {
 
 	public static final RegistryKey<JukeboxSong> SCARICO_IN_VINILE = of("scarico_in_vinile");
 
-	private static RegistryKey<JukeboxSong> of(String id) {
-		return RegistryKey.of(RegistryKeys.JUKEBOX_SONG, AristotlesComedy.of(id));
+	private static RegistryKey<JukeboxSong> of(String name) {
+		return RegistryKey.of(RegistryKeys.JUKEBOX_SONG, AristotlesComedy.of(name));
 	}
 
 }

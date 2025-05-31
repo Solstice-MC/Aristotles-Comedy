@@ -3,18 +3,9 @@
 	"package": "org.solstice.aristotlesComedy.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"FlintAndSteelItemMixin",
-		"ItemStackMixin",
-		"MaxStackSizeMixins$DataComponentTypesMixin",
-		"MaxStackSizeMixins$InventoryMixin",
-		"MaxStackSizeMixins$ItemCommandMixin",
-		"MaxStackSizeMixins$ItemStackMixin"
+		"FireStartingItemsMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
-	},
-	"client": [
-		"ClientPlayerInteractionManagerMixin",
-		"ServerPlayerInteractionManagerMixin"
-	]
+	}
 }

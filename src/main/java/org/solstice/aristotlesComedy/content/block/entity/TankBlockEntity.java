@@ -1,57 +1,46 @@
 package org.solstice.aristotlesComedy.content.block.entity;
 
+import net.fabricmc.fabric.api.transfer.v1.fluid.base.SingleFluidStorage;
 import org.solstice.aristotlesComedy.registry.AristotlesBlockEntities;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
-import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.component.ComponentMap;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
-import org.solstice.aristotlesComedy.registry.AristotlesComponentTypes;
 
 public class TankBlockEntity extends BlockEntity {
 
-	public final SingleVariantStorage<FluidVariant> storage;
+	public final TankStorage storage;
 
 	public TankBlockEntity(BlockPos pos, BlockState state) {
-		super(AristotlesBlockEntities.ALEMBIC, pos, state);
-		this.storage = new AlembicStorage();
+		super(AristotlesBlockEntities.FLUID_TANK, pos, state);
+		this.storage = new TankStorage();
 	}
 
 	@Override
 	protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-		nbt.put("fluid", FluidVariant.CODEC.encodeStart(NbtOps.INSTANCE, this.storage.variant).getOrThrow());
-		nbt.putLong("amount", this.storage.amount);
-	}
-
-
-	@Override
-	protected void addComponents(ComponentMap.Builder builder) {
-		builder
-			.add(AristotlesComponentTypes.FLUID_VARIANT, this.storage.variant)
-			.add(AristotlesComponentTypes.FLUID_AMOUNT, this.storage.amount);
+		super.writeNbt(nbt, registryLookup);
+		this.storage.writeNbt(nbt, registryLookup);
 	}
 
 	@Override
-	protected void readComponents(ComponentsAccess components) {
-		this.storage.variant = components.get(AristotlesComponentTypes.FLUID_VARIANT);
-		this.storage.amount = components.get(AristotlesComponentTypes.FLUID_AMOUNT);
+	protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+		super.readNbt(nbt, registryLookup);
+		this.storage.readNbt(nbt, registryLookup);
 	}
 
-	public static class AlembicStorage extends SingleVariantStorage<FluidVariant> {
-
-		@Override
-		protected FluidVariant getBlankVariant() {
-			return FluidVariant.blank();
-		}
+	public class TankStorage extends SingleFluidStorage {
 
 		@Override
 		protected long getCapacity(FluidVariant fluidVariant) {
-			return (8 * FluidConstants.BUCKET);
+			return FluidConstants.BUCKET * 8;
+		}
+
+		@Override
+		protected void onFinalCommit() {
+			TankBlockEntity.super.markDirty();
 		}
 
 	}

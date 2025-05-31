@@ -11,6 +11,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import org.solstice.euclidsElements.content.api.item.InteractionPreventingItem;
 
 public class WrenchItem extends Item implements InteractionPreventingItem {
 

@@ -1,10 +1,35 @@
 {
+	"item.platinum_glove.throw": {
+		"sounds": [
+			"random/bow"
+		],
+		"subtitle": "subtitle.item.platinum_glove.throw"
+	},
+
+	"block.sabika.fire_crackle": {
+		"sounds": [
+			"block/blastfurnace/blastfurnace1",
+			"block/blastfurnace/blastfurnace2",
+			"block/blastfurnace/blastfurnace3",
+			"block/blastfurnace/blastfurnace4",
+			"block/blastfurnace/blastfurnace5"
+		],
+		"subtitle": "subtitle.block.aristotles_comedy.sabika.fire_crackle"
+	},
 	"block.sacred_heart.heartbeat": {
 		"sounds": [
 			"aristotles_comedy:blocks/sacred_heart/heartbeat"
 		],
-		"subtitle": "subtitle.block.sacred_heart.heartbeat"
+		"subtitle": "subtitle.block.aristotles_comedy.sacred_heart.heartbeat"
 	},
+
+	"entity.ash_bunny.poof": {
+		"sounds": [
+			"aristotles_comedy:blocks/sacred_heart/heartbeat"
+		],
+		"subtitle": "subtitle.block.aristotles_comedy.sacred_heart.heartbeat"
+	},
+
 	"music_disc.scarico_in_vinile": {
 		"sounds": [
 			{

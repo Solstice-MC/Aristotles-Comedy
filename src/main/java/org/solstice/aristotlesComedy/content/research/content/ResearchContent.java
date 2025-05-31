@@ -5,9 +5,9 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import org.solstice.aristotlesComedy.client.content.research.ResearchableRenderContext;
+import org.solstice.aristotlesComedy.client.content.screen.ResearchableRenderContext;
 import org.solstice.aristotlesComedy.registry.AristotlesRegistries;
-import org.solstice.euclidsElements.util.Vec2i;
+import org.solstice.euclidsElements.util.type.Vec2i;
 
 public interface ResearchContent {
 

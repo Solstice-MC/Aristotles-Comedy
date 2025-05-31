@@ -24,5 +24,12 @@
 
 	"biome.aristotles_comedy.ashfields": "Ashfields",
 
+	"subtitle.block.aristotles_comedy.sabika.fire_crackle": "Sabika crackles",
+	"subtitle.block.aristotles_comedy.sacred_heart.heartbeat": "Sacred Heart beats",
+
+	"stat.aristotles_comedy.interact_with_sabika": "Interactions with Sabika",
+
+	"container.aristotles_comedy.metallurgy": "Metallurgy",
+
 	"death.modifier.spirit_projection": "%s, spiritually"
 }

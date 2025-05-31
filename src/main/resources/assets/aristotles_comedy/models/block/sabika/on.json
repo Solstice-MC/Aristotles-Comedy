@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:block/orientable",
+	"textures": {
+		"front": "aristotles_comedy:block/sabika/front_on",
+		"side": "aristotles_comedy:block/sabika/side",
+		"top": "aristotles_comedy:block/sabika/top"
+	}
+}

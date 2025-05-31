@@ -11,8 +11,8 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextCodecs;
 import net.minecraft.util.math.MathHelper;
-import org.solstice.aristotlesComedy.client.content.research.ResearchableRenderContext;
-import org.solstice.euclidsElements.util.Vec2i;
+import org.solstice.aristotlesComedy.client.content.screen.ResearchableRenderContext;
+import org.solstice.euclidsElements.util.type.Vec2i;
 
 import java.awt.*;
 
@@ -48,11 +48,11 @@ public record TranslatedTextContent (
 	@Environment(EnvType.CLIENT)
 	public void render(ResearchableRenderContext renderContext) {
 		Screen screen = renderContext.screen();
-		Vec2i start = renderContext.start();
+		Vec2i start = renderContext.startPos();
 		MatrixStack matrices = renderContext.drawContext().getMatrices();
 		matrices.push();
-//		matrices.translate((float)start.x / 2, (float)start.y / 2, 0);
-//		matrices.scale(0.5F, 0.5F, 1);
+		matrices.translate((float)start.x / 2, (float)start.y / 2, 0);
+		matrices.scale(0.5F, 0.5F, 1);
 
 		int tick = renderContext.renderTick() * TICK_SPEED;
 		int delay = this.translationDelay * TICK_SPEED;

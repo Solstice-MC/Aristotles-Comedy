@@ -1,5 +1,7 @@
 package org.solstice.aristotlesComedy.registry;
 
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
+import net.minecraft.item.SwordItem;
 import net.minecraft.util.Rarity;
 import org.solstice.aristotlesComedy.AristotlesComedy;
 import net.minecraft.component.type.FoodComponent;
@@ -10,19 +12,32 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
-import org.solstice.aristotlesComedy.content.item.ResearchableItem;
-import org.solstice.aristotlesComedy.content.item.WrenchItem;
+import org.solstice.aristotlesComedy.content.item.*;
+import org.solstice.euclidsElements.content.registry.EuclidsComponentTypes;
 
 import java.util.function.Function;
 
 public class AristotlesItems {
 
-    public static void init() {}
+    public static void init() {
+		FluidStorage.ITEM.registerForItems(HumorVialItem.HumorVialStorage::new, HUMOR_VIAL);
+	}
 
 	public static final FoodComponent ASH_SOUP_FOOD_COMPONENT = new FoodComponent.Builder()
 		.nutrition(-2).saturationModifier(-0.2f).alwaysEdible().usingConvertsTo(Items.BOWL).build();
 
 	public static final Item BRONZE_WRENCH = register("bronze_wrench", WrenchItem::new);
+	public static final Item HUMOR_VIAL = register("humor_vial", HumorVialItem::new);
+
+	public static final Item PLATINUM_GLOVE = register("platinum_glove",
+		settings -> new PlatinumGloveItem(AristotlesToolMaterials.PLATINUM, settings),
+		new Item.Settings()
+			.maxDamage(2048)
+			.component(EuclidsComponentTypes.INVENTORY_ITEM_MODEL, AristotlesComedy.of("icon/platinum_glove"))
+			.attributeModifiers(
+				SwordItem.createAttributeModifiers(AristotlesToolMaterials.PLATINUM, 3, -1.6F)
+			)
+	);
 
 	public static final Item ARCHATAME = register("archatame");
 	public static final Item RESEARCH_NOTES = register("research_notes", ResearchableItem::new);

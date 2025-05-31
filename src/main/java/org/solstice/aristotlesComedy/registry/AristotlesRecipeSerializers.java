@@ -7,7 +7,7 @@ import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import org.solstice.euclidsElements.util.CodecRecipeSerializer;
+import org.solstice.euclidsElements.util.recipe.CodecRecipeSerializer;
 
 public class AristotlesRecipeSerializers {
 

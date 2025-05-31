@@ -7,7 +7,7 @@ import net.minecraft.recipe.RecipeType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import org.solstice.euclidsElements.util.IdentifiableRecipeType;
+import org.solstice.euclidsElements.util.recipe.IdentifiableRecipeType;
 
 public class AristotlesRecipeTypes {
 

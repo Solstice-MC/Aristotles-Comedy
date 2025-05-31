@@ -23,11 +23,6 @@
 		"aristotles_comedy.mixins.json"
 	],
 	"accessWidener": "aristotles_comedy.accesswidener",
-	"custom": {
-		"loom:injected_interfaces": {
-			"net/minecraft/item/ItemStack": [ "org/solstice/aristotlesComedy/access/AristotlesItemStack" ]
-		}
-	},
 
 	"depends": {
 		"minecraft": "*",

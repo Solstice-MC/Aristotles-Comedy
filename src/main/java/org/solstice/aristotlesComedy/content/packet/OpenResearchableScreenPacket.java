@@ -12,8 +12,12 @@ import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.registry.entry.RegistryEntry;
 import org.solstice.aristotlesComedy.AristotlesComedy;
-import org.solstice.aristotlesComedy.client.content.screen.ResearchableScreen;
+import org.solstice.aristotlesComedy.client.content.screen.ResearchScreen;
+import org.solstice.aristotlesComedy.content.research.PositionedResearchable;
 import org.solstice.aristotlesComedy.content.research.Researchable;
+import org.solstice.euclidsElements.util.type.Vec2i;
+
+import java.util.List;
 
 public record OpenResearchableScreenPacket (
 	ItemStack stack,
@@ -24,7 +28,7 @@ public record OpenResearchableScreenPacket (
 
 	public static final Codec<OpenResearchableScreenPacket> CODEC = RecordCodecBuilder.create(instance -> instance.group(
 		ItemStack.CODEC.fieldOf("stack").forGetter(OpenResearchableScreenPacket::stack),
-		Researchable.ENTRY_CODEC.fieldOf("entry").forGetter(OpenResearchableScreenPacket::entry)
+		Researchable.ENTRY_CODEC.fieldOf("entries").forGetter(OpenResearchableScreenPacket::entry)
 	).apply(instance, OpenResearchableScreenPacket::new));
 
 	public static final PacketCodec<RegistryByteBuf, OpenResearchableScreenPacket> PACKET_CODEC = PacketCodecs.unlimitedRegistryCodec(CODEC);
@@ -36,7 +40,8 @@ public record OpenResearchableScreenPacket (
 
 	@Environment(EnvType.CLIENT)
 	public static void openResearchableScreen(OpenResearchableScreenPacket packet, ClientPlayNetworking.Context context) {
-		context.client().setScreen(new ResearchableScreen(context.player(), packet.stack, packet.entry));
+		context.client().setScreen(new ResearchScreen(context.player(), packet.stack, List.of(new PositionedResearchable(packet.entry, Vec2i.ZERO))));
+//		context.client().setScreen(new ResearchableScreen(context.player(), packet.stack, packet.entries));
 	}
 
 }

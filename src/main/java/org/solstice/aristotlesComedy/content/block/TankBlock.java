@@ -1,6 +1,12 @@
 package org.solstice.aristotlesComedy.content.block;
 
 import com.mojang.serialization.MapCodec;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorageUtil;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
+import net.minecraft.util.ItemActionResult;
+import net.minecraft.util.hit.BlockHitResult;
 import org.solstice.aristotlesComedy.content.block.entity.TankBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -46,13 +52,28 @@ public class TankBlock extends BlockWithEntity {
 		builder.add(TOP, BOTTOM);
 	}
 
+
+
+
 	@Override
-	public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-		return null;
+	protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+		if (world.isClient) return ItemActionResult.CONSUME;
+		TankBlockEntity entity = getBlockEntity(world, pos);
+		if (entity == null) return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+
+		boolean result = FluidStorageUtil.interactWithFluidStorage(entity.storage, player, hand);
+		return result ? ItemActionResult.SUCCESS : ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
 	}
 
-	public static TankBlockEntity getTankEntity(World world, BlockPos pos) {
+
+
+	public static TankBlockEntity getBlockEntity(World world, BlockPos pos) {
 		return (TankBlockEntity) world.getBlockEntity(pos);
+	}
+
+	@Override
+	public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+		return new TankBlockEntity(pos, state);
 	}
 
 	@Override
@@ -74,8 +95,6 @@ public class TankBlock extends BlockWithEntity {
 		BlockPos offsetPos = pos.offset(direction);
 		BlockState offsetState = world.getBlockState(offsetPos);
 		BooleanProperty property = PROPERTY_MAP.get(direction);
-		System.out.println(direction);
-		System.out.println(property);
 		return state.with(property, !offsetState.isOf(this));
 	}
 

@@ -1,5 +1,6 @@
 package org.solstice.aristotlesComedy;
 
+import org.solstice.aristotlesComedy.content.recipe.MetallurgyRecipe;
 import org.solstice.aristotlesComedy.registry.AristotlesHumors;
 import org.solstice.aristotlesComedy.registry.*;
 import net.fabricmc.api.ModInitializer;
@@ -7,6 +8,7 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.solstice.euclidsElements.content.api.event.EuclidsServerEvents;
 
 public class AristotlesComedy implements ModInitializer {
 
@@ -22,6 +24,9 @@ public class AristotlesComedy implements ModInitializer {
 		AristotlesHumors.init();
 		AristotlesResearchContentTypes.init();
 
+		AristotlesTags.init();
+
+		AristotlesScreenHandlers.init();
 		AristotlesSoundEvents.init();
 		AristotlesJukeboxSongs.init();
 
@@ -34,6 +39,7 @@ public class AristotlesComedy implements ModInitializer {
 		AristotlesRecipeTypes.init();
 		AristotlesRecipeSerializers.init();
 
+		AristotlesFluids.init();
 		AristotlesBlocks.init();
 		AristotlesItems.init();
 		AristotlesEntityTypes.init();
@@ -43,6 +49,8 @@ public class AristotlesComedy implements ModInitializer {
 
 		AristotlesPlacedFeatures.init();
 		AristotlesBiomes.init();
+
+		EuclidsServerEvents.AFTER_RESOURCES_LOADED.register(MetallurgyRecipe::populateIngredients);
 	}
 
 }

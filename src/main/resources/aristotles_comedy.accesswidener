@@ -1,6 +1,9 @@
 accessWidener v2 named
 
 accessible method net/minecraft/entity/LivingEntity getSoundVolume ()F
-accessible class net/minecraft/registry/RegistryBuilder$Registries
+
+accessible method net/minecraft/entity/FallingBlockEntity <init> (Lnet/minecraft/world/World;DDDLnet/minecraft/block/BlockState;)V
+accessible field net/minecraft/entity/FallingBlockEntity block Lnet/minecraft/block/BlockState;
 
 accessible field net/minecraft/client/gui/screen/Screen textRenderer Lnet/minecraft/client/font/TextRenderer;
+
