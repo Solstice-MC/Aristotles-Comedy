@@ -11,7 +11,7 @@ import org.solstice.aristotlesComedy.content.block.entity.*;
 public class AristotlesBlockEntities {
 
 	public static void init() {
-		FluidStorage.SIDED.registerForBlockEntity((myTank, direction) -> myTank.storage, FLUID_TANK);
+		FluidStorage.SIDED.registerForBlockEntity(TankBlockEntity::getStorage, FLUID_TANK);
 	}
 
 	public static final BlockEntityType<TankBlockEntity> FLUID_TANK = register("fluid_tank",

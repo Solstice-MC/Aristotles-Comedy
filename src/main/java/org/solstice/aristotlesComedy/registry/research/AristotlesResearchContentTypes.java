@@ -1,15 +1,15 @@
-package org.solstice.aristotlesComedy.registry;
+package org.solstice.aristotlesComedy.registry.research;
 
 import net.minecraft.registry.Registry;
 import org.solstice.aristotlesComedy.AristotlesComedy;
 import org.solstice.aristotlesComedy.content.research.content.*;
+import org.solstice.aristotlesComedy.registry.AristotlesRegistries;
 
 public class AristotlesResearchContentTypes {
 
 	public static void init() {}
 
 	public static final ResearchContent.Type TEXT = register("text", TextContent.TYPE);
-	public static final ResearchContent.Type TRANSLATED_TEXT = register("translated_text", TranslatedTextContent.TYPE);
 	public static final ResearchContent.Type IMAGE = register("image", ImageContent.TYPE);
 
 	private static ResearchContent.Type register(String name, ResearchContent.Type type) {

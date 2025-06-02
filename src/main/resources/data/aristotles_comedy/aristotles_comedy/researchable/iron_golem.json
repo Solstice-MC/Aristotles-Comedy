@@ -1,30 +1,58 @@
 {
-	"civilization": "villager",
 	"size": [128, 128],
 	"contents": [
 		{
-			"type": "aristotles_comedy:translated_text",
-			"original_text": {
+			"type": "aristotles_comedy:image",
+			"size": [128, 128],
+			"path": "aristotles_comedy:iron_golem/front",
+			"description": {
+				"translate": "test"
+			}
+		},
+		{
+			"type": "aristotles_comedy:text",
+			"text": {
 				"text": "what the hell is this even supposed to mean",
 				"font": "minecraft:illageralt"
 			},
-			"translated_text": {
-				"translate": "research_note.aristotles_comedy.iron_golem.description"
-			},
+			"effects": [
+				{
+					"type": "aristotles_comedy:fade",
+					"start_opacity": 255,
+					"end_opacity": 63
+				}
+			],
 			"offset": [8, 8]
 		},
 		{
-			"type": "aristotles_comedy:image",
-			"size": [64, 64],
-			"path": "aristotles_comedy:iron_golem_headless_sketch",
-			"description": { "translate": "test" }
+			"type": "aristotles_comedy:text",
+			"text": {
+				"translate": "research_note.aristotles_comedy.iron_golem.description"
+			},
+			"effects": [
+				{
+					"type": "aristotles_comedy:fade",
+					"start_opacity": 0,
+					"end_opacity": 255
+				}
+			],
+			"offset": [12, 12]
 		},
 		{
 			"type": "aristotles_comedy:image",
 			"size": [64, 64],
-			"path": "aristotles_comedy:iron_golem_pumpkin_sketch",
-			"description": { "translate": "test" },
-			"effect": "aristotles_comedy:invisible_ink"
+			"path": "aristotles_comedy:iron_golem/headless_sketch",
+			"description": {
+				"translate": "test"
+			}
+		},
+		{
+			"type": "aristotles_comedy:image",
+			"size": [64, 64],
+			"path": "aristotles_comedy:iron_golem/pumpkin_sketch",
+			"description": {
+				"translate": "test"
+			}
 		}
 	]
 }

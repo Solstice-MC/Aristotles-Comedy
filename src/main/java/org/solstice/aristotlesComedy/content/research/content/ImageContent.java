@@ -4,12 +4,13 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextCodecs;
 import net.minecraft.util.Identifier;
-import org.solstice.aristotlesComedy.client.content.screen.ResearchableRenderContext;
-import org.solstice.aristotlesComedy.content.research.Researchable;
+import org.solstice.aristotlesComedy.content.research.ResearchableRenderContext;
 import org.solstice.euclidsElements.util.type.Vec2i;
 
 public record ImageContent (
@@ -40,19 +41,21 @@ public record ImageContent (
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void render(ResearchableRenderContext renderContext) {
-		RegistryEntry<Researchable> entry = renderContext.entry();
-		Vec2i start = renderContext.startPos();
+	public void render(Screen screen, DrawContext drawContext, ResearchableRenderContext renderContext, Vec2i startPos) {
 		Identifier texture = this.path.withPrefixedPath("textures/gui/researchable/").withSuffixedPath(".png");
-		Vec2i size = entry.value().size();
-		renderContext.drawContext().drawTexture(
+		MatrixStack matrices = drawContext.getMatrices();
+
+		matrices.push();
+		ResearchContent.super.render(screen, drawContext, renderContext, startPos);
+		drawContext.drawTexture(
 			texture,
-			start.x + this.definition.offset().x,
-			start.y + this.definition.offset().y,
+			startPos.x,
+			startPos.y,
 			0, 0,
-			size.x, size.y,
-			size.x, size.y
+			this.size.x, this.size.y,
+			this.size.x, this.size.y
 		);
+		matrices.pop();
 	}
 
 }

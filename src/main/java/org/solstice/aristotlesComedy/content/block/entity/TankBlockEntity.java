@@ -1,6 +1,10 @@
 package org.solstice.aristotlesComedy.content.block.entity;
 
 import net.fabricmc.fabric.api.transfer.v1.fluid.base.SingleFluidStorage;
+import net.minecraft.block.Block;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
+import org.solstice.aristotlesComedy.content.block.tank.AbstractTankBlock;
 import org.solstice.aristotlesComedy.registry.AristotlesBlockEntities;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
@@ -29,6 +33,16 @@ public class TankBlockEntity extends BlockEntity {
 	protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
 		super.readNbt(nbt, registryLookup);
 		this.storage.readNbt(nbt, registryLookup);
+	}
+
+	public TankStorage getStorage(Direction direction) {
+		World world = this.getWorld();
+		if (world == null) return this.storage;
+
+		Block block = world.getBlockState(pos).getBlock();
+		if (block instanceof AbstractTankBlock tankBlock) return tankBlock.getStorage(this, direction);
+		this.getWorld().getBlockState(this.getPos());
+		return this.storage;
 	}
 
 	public class TankStorage extends SingleFluidStorage {

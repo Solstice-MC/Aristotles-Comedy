@@ -1,5 +1,8 @@
 package org.solstice.aristotlesComedy.content.block;
 
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -9,6 +12,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.state.property.Property;
 import net.minecraft.util.CachedMapper;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -72,19 +76,15 @@ public class PipeBlock extends Block {
 
 	public PipeBlock(Settings settings) {
 		super(settings);
-		this.setDefaultState(this.stateManager.getDefaultState()
-			.with(NORTH, false)
-			.with(SOUTH, false)
-			.with(EAST, false)
-			.with(WEST, false)
-			.with(UP, false)
-			.with(DOWN, false)
-		);
+		BlockState state = this.stateManager.getDefaultState();
+		for (BooleanProperty property : DIRECTION_PROPERTIES.values()) state = state.with(property, false);
+		this.setDefaultState(state);
 	}
 
 	@Override
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-		builder.add(WATERLOGGED, NORTH, SOUTH, EAST, WEST, UP, DOWN);
+		builder.add(WATERLOGGED);
+		DIRECTION_PROPERTIES.values().forEach(builder::add);
 	}
 
 	@Override
@@ -103,19 +103,23 @@ public class PipeBlock extends Block {
 		for (Direction direction : Direction.values()) {
 			BooleanProperty property = DIRECTION_PROPERTIES.get(direction);
 			BlockPos offset = pos.offset(direction);
-			if (this.canConnectTo(offset, world)) state = state.with(property, true);
+			if (this.canConnectTo(world, offset, direction)) state = state.with(property, true);
 		}
 
 		state = state.with(WATERLOGGED, world.getFluidState(pos).isOf(Fluids.WATER));
 		return state;
 	}
 
-	private boolean canConnectTo(BlockPos pos, WorldView world) {
+	private boolean canConnectTo(World world, BlockPos pos, Direction direction) {
 		BlockState state = world.getBlockState(pos);
 		Block block = state.getBlock();
 		if (block instanceof PipeBlock) return true;
-		if (!world.getFluidState(pos).isEmpty()) return false;
-		return !state.isTransparent(world, pos);
+
+		Storage<FluidVariant> storage = FluidStorage.SIDED.find(world, pos, direction);
+		if (storage != null)
+			return storage.supportsInsertion() || storage.supportsExtraction();
+
+		return false;
 	}
 
 	@Override

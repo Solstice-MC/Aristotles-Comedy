@@ -3,6 +3,7 @@ package org.solstice.aristotlesComedy;
 import org.solstice.aristotlesComedy.content.recipe.MetallurgyRecipe;
 import org.solstice.aristotlesComedy.registry.AristotlesHumors;
 import org.solstice.aristotlesComedy.registry.*;
+import org.solstice.aristotlesComedy.registry.research.*;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.util.Identifier;
@@ -23,6 +24,7 @@ public class AristotlesComedy implements ModInitializer {
 	public void onInitialize() {
 		AristotlesHumors.init();
 		AristotlesResearchContentTypes.init();
+		AristotlesResearchEffectTypes.init();
 
 		AristotlesTags.init();
 

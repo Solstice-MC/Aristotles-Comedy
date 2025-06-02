@@ -16,6 +16,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import org.solstice.aristotlesComedy.client.AristotlesComedyClient;
 import org.solstice.aristotlesComedy.content.block.*;
+import org.solstice.aristotlesComedy.content.block.tank.*;
 
 import java.util.function.Function;
 
@@ -27,20 +28,18 @@ public class AristotlesBlocks {
 	public static void clientInit() {
 		ColorProviderRegistry.BLOCK.register(AristotlesComedyClient::test, AristotlesBlocks.BISMUTH_BLOCK);
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
-			AristotlesBlocks.YELLOW_TRISMEGISTITE_CLUSTER,
-			AristotlesBlocks.RED_TRISMEGISTITE_CLUSTER,
-			AristotlesBlocks.BLUE_TRISMEGISTITE_CLUSTER,
-			AristotlesBlocks.BLACK_TRISMEGISTITE_CLUSTER,
-
-			AristotlesBlocks.BRAZIER,
-			AristotlesBlocks.SOUL_BRAZIER
+			GLASS_PIPE,
+			GLASS_TANK,
+			BRAZIER,
+			SOUL_BRAZIER
 		);
 	}
 
 	public static final Block RESEARCH = register("research", ResearchBlock::new, AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE));
 
 	public static final Block GLASS_TANK = register("glass_tank", TankBlock::new, AbstractBlock.Settings.copy(Blocks.GLASS));
-	public static final Block BRONZE_TANK = register("bronze_tank", TankBlock::new, AbstractBlock.Settings.copy(Blocks.IRON_BLOCK));
+	public static final Block BRONZE_TANK = register("bronze_tank", StackingTankBlock::new, AbstractBlock.Settings.copy(Blocks.IRON_BLOCK));
+	public static final Block GLASS_PIPE = register("glass_pipe", PipeBlock::new, AbstractBlock.Settings.copy(Blocks.GLASS));
 	public static final Block BRONZE_PIPE = register("bronze_pipe", PipeBlock::new, AbstractBlock.Settings.copy(Blocks.IRON_BLOCK));
 
 	public static final Block YELLOW_TRISMEGISTITE_BLOCK = register("yellow_trismegistite_block", AbstractBlock.Settings.copy(Blocks.AMETHYST_BLOCK));

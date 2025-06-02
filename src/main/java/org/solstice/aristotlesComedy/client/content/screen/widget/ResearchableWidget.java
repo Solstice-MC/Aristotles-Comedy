@@ -10,7 +10,7 @@ import net.minecraft.client.util.NarratorManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
-import org.solstice.aristotlesComedy.client.content.screen.ResearchableRenderContext;
+import org.solstice.aristotlesComedy.content.research.ResearchableRenderContext;
 import org.solstice.aristotlesComedy.content.research.Researchable;
 import org.solstice.euclidsElements.util.type.Vec2i;
 
@@ -55,14 +55,15 @@ public class ResearchableWidget extends ClickableWidget {
 	}
 
 	@Override
-	public void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
+	public void renderWidget(DrawContext drawContext, int mouseX, int mouseY, float delta) {
 		this.renderTick++;
 
 		Vec2i startingPos = new Vec2i(this.getX(), this.getY());
+		Vec2i mousePos = new Vec2i(mouseX, mouseY);
 		ResearchableRenderContext renderContext = new ResearchableRenderContext(
-			this.player, this.stack, this.entry, this.screen, context, startingPos, new Vec2i(mouseX, mouseY), delta, this.renderTick
+			this.player, this.stack, mousePos, this.renderTick
 		);
-		entry.value().render(renderContext);
+		entry.value().render(this.screen, drawContext, renderContext, startingPos);
 	}
 
 	@Override
