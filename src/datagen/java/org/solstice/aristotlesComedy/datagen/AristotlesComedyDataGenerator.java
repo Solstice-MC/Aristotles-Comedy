@@ -1,4 +1,4 @@
-package org.solstice.aristotlesComedy;
+package org.solstice.aristotlesComedy.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -9,8 +9,8 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
+import org.solstice.aristotlesComedy.AristotlesComedy;
 import org.solstice.aristotlesComedy.content.block.*;
-import org.solstice.aristotlesComedy.content.block.tank.AbstractTankBlock;
 import org.solstice.aristotlesComedy.content.block.tank.StackingTankBlock;
 import org.solstice.aristotlesComedy.content.block.tank.TankBlock;
 import org.solstice.euclidsElements.autoDatagen.api.generator.*;

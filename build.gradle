@@ -16,7 +16,9 @@ loom {
 }
 
 fabricApi {
-	configureDataGeneration()
+	configureDataGeneration {
+		createSourceSet = true
+	}
 }
 
 dependencies {
