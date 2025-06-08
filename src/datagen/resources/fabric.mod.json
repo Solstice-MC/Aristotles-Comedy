@@ -1,9 +1,0 @@
-{
-	"schemaVersion": 1,
-	"id": "datagen",
-	"version": "4.1.8",
-
-	"entrypoints": {
-		"fabric-datagen": [ "org.solstice.aristotlesComedy.datagen.AristotlesComedyDataGenerator" ]
-	}
-}

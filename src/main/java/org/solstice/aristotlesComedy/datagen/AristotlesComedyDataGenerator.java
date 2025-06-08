@@ -2,6 +2,7 @@ package org.solstice.aristotlesComedy.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.minecraft.block.BarrelBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.LecternBlock;
 import net.minecraft.data.client.*;
@@ -11,6 +12,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import org.solstice.aristotlesComedy.AristotlesComedy;
 import org.solstice.aristotlesComedy.content.block.*;
+import org.solstice.aristotlesComedy.content.block.pipe.PipeBlock;
 import org.solstice.aristotlesComedy.content.block.tank.StackingTankBlock;
 import org.solstice.aristotlesComedy.content.block.tank.TankBlock;
 import org.solstice.euclidsElements.autoDatagen.api.generator.*;
@@ -31,17 +33,27 @@ public class AristotlesComedyDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(AutoLootTableGenerator::new);
 
 		BlockModelSupplier.register(LecternBlock.class, AristotlesComedyDataGenerator::registerRotatable);
-		BlockModelSupplier.register(TankBlock.class, AristotlesComedyDataGenerator::registerCubeTop);
-		BlockModelSupplier.register(StackingTankBlock.class, AristotlesComedyDataGenerator::registerTank);
+		BlockModelSupplier.register(BarrelBlock.class, AristotlesComedyDataGenerator::registerBarrel);
+
+//		BlockModelSupplier.register(SabikaBlock.class, BlockModelSupplier::registerCooker);
+		BlockModelSupplier.register(TankBlock.class, BlockModelSupplier::registerCubeTop);
+		BlockModelSupplier.register(StackingTankBlock.class, AristotlesComedyDataGenerator::registerStackingTank);
 		BlockModelSupplier.register(PipeBlock.class, AristotlesComedyDataGenerator::registerPipe);
 		BlockModelSupplier.register(ClusterBlock.class, AristotlesComedyDataGenerator::registerCluster);
 		BlockModelSupplier.register(BrazierBlock.class, AristotlesComedyDataGenerator::registerBrazier);
 	}
 
-	@Deprecated
-	public static void registerCubeTop(BlockStateModelGenerator generator, Block block, Identifier id) {
-		generator.registerSingleton(block, TexturedModel.CUBE_TOP);
-		generator.registerParentedItemModel(block, id);
+	public static void registerBarrel(BlockStateModelGenerator generator, Block block, Identifier id) {
+		Identifier topTexture = id.withPrefixedPath("block/").withSuffixedPath("_top_open");
+		generator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+			.coordinate(generator.createUpDefaultFacingVariantMap())
+			.coordinate(BlockStateVariantMap.create(Properties.OPEN)
+				.register(false, BlockStateVariant.create().put(VariantSettings.MODEL, TexturedModel.CUBE_BOTTOM_TOP.upload(block, generator.modelCollector)))
+				.register(true, BlockStateVariant.create().put(VariantSettings.MODEL, TexturedModel.CUBE_BOTTOM_TOP.get(block).textures(textureMap ->
+					textureMap.put(TextureKey.TOP, topTexture)).upload(block, "_open", generator.modelCollector))
+				)
+			)
+		);
 	}
 
 	public static void registerRotatable(BlockStateModelGenerator generator, Block block, Identifier id) {
@@ -55,28 +67,14 @@ public class AristotlesComedyDataGenerator implements DataGeneratorEntrypoint {
 		TextureMap texture = new TextureMap()
 			.put(TextureKey.TEXTURE, blockId);
 
-		Model connectorModel = new Model(
-			Optional.of(AristotlesComedy.of("block/template/pipe/connector")),
-			Optional.empty(),
-			TextureKey.TEXTURE
-		);
-		Model positiveModel = new Model(
-			Optional.of(AristotlesComedy.of("block/template/pipe/positive")),
-			Optional.empty(),
-			TextureKey.TEXTURE
-		);
-		Model negativeModel = new Model(
-			Optional.of(AristotlesComedy.of("block/template/pipe/negative")),
-			Optional.empty(),
-			TextureKey.TEXTURE
-		);
-		Model straightModel = new Model(
-			Optional.of(AristotlesComedy.of("block/template/pipe/straight")),
-			Optional.empty(),
-			TextureKey.TEXTURE
-		);
+		Model connectorModel = BlockModelSupplier.templatedModel(AristotlesComedy.of("pipe/connector"));
+		Model cornerModel = BlockModelSupplier.templatedModel(AristotlesComedy.of("pipe/corner"));
+		Model positiveModel = BlockModelSupplier.templatedModel(AristotlesComedy.of("pipe/positive"));
+		Model negativeModel = BlockModelSupplier.templatedModel(AristotlesComedy.of("pipe/negative"));
+		Model straightModel = BlockModelSupplier.templatedModel(AristotlesComedy.of("pipe/straight"));
 
 		Identifier connectorId = connectorModel.upload(block, "/connector", texture, generator.modelCollector);
+		Identifier cornerId = cornerModel.upload(block, "/corner", texture, generator.modelCollector);
 		Identifier positiveId = positiveModel.upload(block, "/positive", texture, generator.modelCollector);
 		Identifier negativeId = negativeModel.upload(block, "/negative", texture, generator.modelCollector);
 		Identifier straightId = straightModel.upload(block, "/straight", texture, generator.modelCollector);
@@ -121,6 +119,10 @@ public class AristotlesComedyDataGenerator implements DataGeneratorEntrypoint {
 	}
 
 	public static void registerTank(BlockStateModelGenerator generator, Block block, Identifier id) {
+
+	}
+
+	public static void registerStackingTank(BlockStateModelGenerator generator, Block block, Identifier id) {
 		Identifier blockId = id.withPrefixedPath("block/");
 
 		Models.CUBE_COLUMN.upload(

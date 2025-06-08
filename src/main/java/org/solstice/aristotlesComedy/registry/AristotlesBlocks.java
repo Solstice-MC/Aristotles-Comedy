@@ -5,6 +5,8 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.item.SwordItem;
+import net.minecraft.item.ToolMaterials;
 import org.solstice.aristotlesComedy.AristotlesComedy;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -16,6 +18,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import org.solstice.aristotlesComedy.client.AristotlesComedyClient;
 import org.solstice.aristotlesComedy.content.block.*;
+import org.solstice.aristotlesComedy.content.block.pipe.PipeBlock;
 import org.solstice.aristotlesComedy.content.block.tank.*;
 
 import java.util.function.Function;
@@ -31,11 +34,18 @@ public class AristotlesBlocks {
 			GLASS_PIPE,
 			GLASS_TANK,
 			BRAZIER,
-			SOUL_BRAZIER
+			SOUL_BRAZIER,
+			MARBLE_BUST
 		);
 	}
 
 	public static final Block RESEARCH = register("research", ResearchBlock::new, AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE));
+	public static final Block MARBLE_BUST = register("marble_bust", MarbleBustBlock::new,
+		AbstractBlock.Settings.copy(Blocks.CALCITE),
+		new Item.Settings().maxCount(1).attributeModifiers(SwordItem.createAttributeModifiers(
+			ToolMaterials.STONE, 3, -3.2F
+		))
+	);
 
 	public static final Block GLASS_TANK = register("glass_tank", TankBlock::new, AbstractBlock.Settings.copy(Blocks.GLASS));
 	public static final Block BRONZE_TANK = register("bronze_tank", StackingTankBlock::new, AbstractBlock.Settings.copy(Blocks.IRON_BLOCK));

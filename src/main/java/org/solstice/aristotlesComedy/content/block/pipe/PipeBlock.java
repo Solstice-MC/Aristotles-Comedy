@@ -1,4 +1,4 @@
-package org.solstice.aristotlesComedy.content.block;
+package org.solstice.aristotlesComedy.content.block.pipe;
 
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
@@ -12,7 +12,6 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
 import net.minecraft.util.CachedMapper;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -22,7 +21,6 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
 
 import java.util.Map;
 
@@ -45,15 +43,24 @@ public class PipeBlock extends Block {
 		Direction.DOWN, Properties.DOWN
 	);
 
-	public static final VoxelShape CONNECTOR_SHAPE = Block.createCuboidShape(5, 5, 5, 11, 11, 11);
+//	public static final VoxelShape CONNECTOR_SHAPE = Block.createCuboidShape(5, 5, 5, 11, 11, 11);
+	public static final VoxelShape CONNECTOR_SHAPE = Block.createCuboidShape(6, 6, 6, 10, 10, 10);
 
+//	public static final Map<Direction, VoxelShape> DIRECTION_SHAPES = Map.of(
+//		Direction.NORTH, Block.createCuboidShape(5, 5, 0, 11, 11, 8),
+//		Direction.SOUTH, Block.createCuboidShape(5, 5, 8, 11, 11, 16),
+//		Direction.EAST, Block.createCuboidShape(8, 5, 5, 16, 11, 11),
+//		Direction.WEST, Block.createCuboidShape(0, 5, 5, 8, 11, 11),
+//		Direction.UP, Block.createCuboidShape(5, 8, 5, 11, 16, 11),
+//		Direction.DOWN, Block.createCuboidShape(5, 0, 5, 11, 8, 11)
+//	);
 	public static final Map<Direction, VoxelShape> DIRECTION_SHAPES = Map.of(
-		Direction.NORTH, Block.createCuboidShape(5, 5, 0, 11, 11, 8),
-		Direction.SOUTH, Block.createCuboidShape(5, 5, 8, 11, 11, 16),
-		Direction.EAST, Block.createCuboidShape(8, 5, 5, 16, 11, 11),
-		Direction.WEST, Block.createCuboidShape(0, 5, 5, 8, 11, 11),
-		Direction.UP, Block.createCuboidShape(5, 8, 5, 11, 16, 11),
-		Direction.DOWN, Block.createCuboidShape(5, 0, 5, 11, 8, 11)
+		Direction.NORTH, Block.createCuboidShape(6, 6, 0, 10, 10, 8),
+		Direction.SOUTH, Block.createCuboidShape(6, 6, 8, 10, 10, 16),
+		Direction.EAST, Block.createCuboidShape(8, 6, 6, 16, 10, 10),
+		Direction.WEST, Block.createCuboidShape(0, 6, 6, 8, 10, 10),
+		Direction.UP, Block.createCuboidShape(6, 8, 6, 10, 16, 10),
+		Direction.DOWN, Block.createCuboidShape(6, 0, 6, 10, 8, 10)
 	);
 
 	public static final CachedMapper<BlockState, VoxelShape> SHAPE_CACHE = Util.cachedMapper(PipeBlock::generateShape);

@@ -16,7 +16,8 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [ "org.solstice.aristotlesComedy.AristotlesComedy" ],
-		"client": [ "org.solstice.aristotlesComedy.client.AristotlesComedyClient" ]
+		"client": [ "org.solstice.aristotlesComedy.client.AristotlesComedyClient" ],
+		"fabric-datagen": [ "org.solstice.aristotlesComedy.datagen.AristotlesComedyDataGenerator" ]
 	},
 	"mixins": [
 		"aristotles_comedy.mixins.json"

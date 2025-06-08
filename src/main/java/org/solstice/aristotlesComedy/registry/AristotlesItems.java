@@ -54,9 +54,12 @@ public class AristotlesItems {
 	public static final Item LEAD_INGOT = register("lead_ingot");
 	public static final Item LEAD_NUGGET = register("lead_nugget");
 	public static final Item SILVER_INGOT = register("silver_ingot");
+	public static final Item SILVER_NUGGET = register("silver_nugget");
 	public static final Item PLATINUM_INGOT = register("platinum_ingot");
+	public static final Item PLATINUM_NUGGET = register("platinum_nugget");
 	public static final Item MERCURY_INGOT = register("mercury_ingot");
 	public static final Item BRONZE_INGOT = register("bronze_ingot");
+	public static final Item BRONZE_NUGGET = register("bronze_nugget");
 
 	public static final Item ALKAHEST = register("alkahest");
 

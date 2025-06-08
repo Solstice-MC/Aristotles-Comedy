@@ -26,6 +26,9 @@ public class AristotlesBlockEntities {
 	public static final BlockEntityType<ResearchBlockEntity> RESEARCH = register("research",
 		BlockEntityType.Builder.create(ResearchBlockEntity::new, AristotlesBlocks.RESEARCH).build()
 	);
+	public static final BlockEntityType<MarbleBustBlockEntity> MARBLE_BUST = register("marble_bust",
+		BlockEntityType.Builder.create(MarbleBustBlockEntity::new, AristotlesBlocks.MARBLE_BUST).build()
+	);
 
 	public static <T extends BlockEntityType<?>> T register(String name, T type) {
 		Identifier id = AristotlesComedy.of(name);
